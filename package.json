@@ -4,6 +4,10 @@
   "description": "A super cool npm package!",
   "main": "index.js",
   "scripts": {
+    "changelog:commit": "git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && echo \"\\x1b[102m\\x1b[1m CHANGELOG \\x1b[0m\" Committed CHANGELOG.md",
+    "changelog:generate:major": "./node_modules/.bin/changelog -M && echo \"\\x1b[102m\\x1b[1m CHANGELOG \\x1b[0m\" Updated CHANGELOG.md",
+    "changelog:generate:minor": "./node_modules/.bin/changelog -m && echo \"\\x1b[102m\\x1b[1m CHANGELOG \\x1b[0m\" Updated CHANGELOG.md",
+    "changelog:generate:patch": "./node_modules/.bin/changelog -p && echo \"\\x1b[102m\\x1b[1m CHANGELOG \\x1b[0m\" Updated CHANGELOG.md",
     "eslint": "./node_modules/.bin/eslint src/ && echo \"\\x1b[102m\\x1b[1m ESLINT \\x1b[0m\" No JavaScript ESLint errors to fix",
     "eslint:fix": "./node_modules/.bin/eslint --fix src/ && echo \"\\x1b[102m\\x1b[1m ESLINT \\x1b[0m\" ESLint JavaScript errors fixed",
     "lib:build": "./node_modules/.bin/babel src --out-dir lib && echo \"\\x1b[102m\\x1b[1m BABEL \\x1b[0m\" Library built",
@@ -12,6 +16,9 @@
     "lib:delete-tests": "find lib/ -name '**test**' -delete && echo \"\\x1b[102m\\x1b[1m DELETE \\x1b[0m\" Removed tests from library",
     "lib:pre-publish": "npm run --silent eslint:fix && npm run --silent lib:clean && npm run --silent lib:build && npm run --silent lib:delete-tests && npm run --silent lib:copy-package-json",
     "lib:publish": "npm publish ./lib",
+    "release:major": "npm run --silent changelog:generate:major && npm run --silent changelog:commit && npm version major && npm run lib:pre-publish",
+    "release:minor": "npm run --silent changelog:generate:minor && npm run --silent changelog:commit && npm version minor && npm run lib:pre-publish",
+    "release:patch": "npm run --silent changelog:generate:patch && npm run --silent changelog:commit && npm version patch && npm run lib:pre-publish",
     "test": "./node_modules/.bin/jest --config ./jest.config.json",
     "test:coverage": "./node_modules/.bin/jest --config ./jest.config.json --coverage"
   },
