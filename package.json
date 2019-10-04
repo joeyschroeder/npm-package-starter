@@ -4,7 +4,7 @@
   "description": "A super cool npm package!",
   "main": "index.js",
   "scripts": {
-    "changelog:commit": "git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && echo \"\\x1b[102m\\x1b[1m CHANGELOG \\x1b[0m\" Committed CHANGELOG.md",
+    "changelog:commit": "git add CHANGELOG.md && git commit -m 'update CHANGELOG.md' && echo \"\\x1b[102m\\x1b[1m CHANGELOG \\x1b[0m\" Committed CHANGELOG.md",
     "changelog:generate:major": "./node_modules/.bin/changelog -M && echo \"\\x1b[102m\\x1b[1m CHANGELOG \\x1b[0m\" Updated CHANGELOG.md",
     "changelog:generate:minor": "./node_modules/.bin/changelog -m && echo \"\\x1b[102m\\x1b[1m CHANGELOG \\x1b[0m\" Updated CHANGELOG.md",
     "changelog:generate:patch": "./node_modules/.bin/changelog -p && echo \"\\x1b[102m\\x1b[1m CHANGELOG \\x1b[0m\" Updated CHANGELOG.md",
